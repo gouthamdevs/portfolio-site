@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glow-text {
+  text-shadow:
+    0 0 1px #fff,
+    0 0 3px #c67ac2,
+    0 0 6px #c67ac2;
+}
+
+.pixel-particle {
+  position: absolute;
+  background-color: white;
+  opacity: 0.25;
+  border-radius: 2px;
+  animation: floatPixel ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 1px white);
+}
+
+.large-pixel {
+  width: 12px !important;
+  height: 12px !important;
+  opacity: 0.5;
+  background-color: #ffffff;
+  filter: drop-shadow(0 0 4px #ffffff);
+  border-radius: 1px;
+}
+
+
+@keyframes floatPixel {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(-10px, -15px) scale(1.1);
+  }
+  50% {
+    transform: translate(5px, -10px) scale(0.9);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(15px, -5px) scale(1.05);
+  }
+  100% {
+    transform: translate(0, -40px) scale(1);
+    opacity: 0.2;
+  }
+}
+
+
+
+
+
+
+
