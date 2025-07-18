@@ -4,6 +4,9 @@ import '@fontsource/press-start-2p';
 import '@fontsource/orbitron';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
+// ✅ Correctly import the profile image
+import profileImg from '/assets/profile.jpg'; // Adjust path if needed
+
 export default function Hero({ setSection }) {
   return (
     <section className="text-center pt-12 pb-20 min-h-screen flex flex-col items-center justify-start">
@@ -11,8 +14,9 @@ export default function Hero({ setSection }) {
         <h1 className="text-3xl md:text-5xl font-bold mb-4 font-arcade">Goutham dev S</h1>
 
         <div className="flex justify-center mb-2">
+          {/* ✅ Use the imported image */}
           <img
-            src="/assets/profile.jpg"
+            src={profileImg}
             alt="Goutham"
             className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
           />
@@ -26,7 +30,7 @@ export default function Hero({ setSection }) {
           <a href="https://github.com/gouthamdevs" target="_blank" rel="noopener noreferrer">
             <FaGithub className="text-white hover:text-pink-300 text-3xl transition" />
           </a>
-          <a href="https://www.linkedin.com/in/goutham-dev-s-5916a7256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/goutham-dev-s-gds" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="text-white hover:text-pink-300 text-3xl transition" />
           </a>
         </div>
