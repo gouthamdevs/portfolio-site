@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import blockbreakerIcon from '/assets/blockbreakerIcon.png';
 import block_icon from '/assets/block_icon.png';
 import block_1 from '/assets/block_1.png';
@@ -24,9 +24,17 @@ export default function Projects() {
   const [expanded, setExpanded] = useState(null);
   const [modalImage, setModalImage] = useState(null);
 
+  const detailRef = useRef(null);
+
   useEffect(() => {
     document.body.style.overflow = modalImage ? 'hidden' : '';
   }, [modalImage]);
+
+  useEffect(() => {
+    if (expanded !== null && detailRef.current) {
+      detailRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [expanded]);
 
   const projects = [
     {
@@ -105,7 +113,10 @@ export default function Projects() {
       </div>
 
       {expanded !== null && (
-        <div className="bg-white/10 p-6 rounded-lg max-w-[95vw] sm:max-w-2xl mx-auto">
+        <div
+          ref={detailRef}
+          className="bg-white/10 p-6 rounded-lg max-w-[95vw] sm:max-w-2xl mx-auto"
+        >
           <img
             src={projects[expanded].icon}
             alt={`${projects[expanded].name} Icon`}
@@ -114,23 +125,23 @@ export default function Projects() {
           <p className="text-sm sm:text-base font-orbitron glow-text text-center mb-4">
             {projects[expanded].description}
           </p>
-         <ul className="list-disc text-left text-sm md:text-base px-4 sm:px-6 mt-4 text-gray-300">
-  {projects[expanded].features.map((feature, i) => (
-    <li key={i} className="mb-2">{feature}</li>
-  ))}
-</ul>
+          <ul className="list-disc text-left text-sm md:text-base px-4 sm:px-6 mt-4 text-gray-300">
+            {projects[expanded].features.map((feature, i) => (
+              <li key={i} className="mb-2">{feature}</li>
+            ))}
+          </ul>
 
-<div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4">
-  {projects[expanded].screenshots.map((shot, i) => (
-    <img
-      key={i}
-      src={shot}
-      alt={`Screenshot ${i + 1}`}
-      className="w-[30%] sm:w-24 md:w-32 h-auto object-cover rounded cursor-pointer hover:scale-105 transition"
-      onClick={() => setModalImage(shot)}
-    />
-  ))}
-</div>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4">
+            {projects[expanded].screenshots.map((shot, i) => (
+              <img
+                key={i}
+                src={shot}
+                alt={`Screenshot ${i + 1}`}
+                className="w-[30%] sm:w-24 md:w-32 h-auto object-cover rounded cursor-pointer hover:scale-105 transition"
+                onClick={() => setModalImage(shot)}
+              />
+            ))}
+          </div>
 
           <div className="text-pink-400 space-x-4 text-center mt-4">
             {projects[expanded].video && (
@@ -148,7 +159,10 @@ export default function Projects() {
       )}
 
       {modalImage && (
-        <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center" onClick={() => setModalImage(null)}>
+        <div
+          className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center"
+          onClick={() => setModalImage(null)}
+        >
           <div onClick={(e) => e.stopPropagation()}>
             <img
               src={modalImage}

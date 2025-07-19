@@ -5,6 +5,11 @@ import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import profileImg from '/assets/profile.jpg';
 
 export default function Hero({ setSection }) {
+
+  const handleToggle = (target) => {
+    setSection((prev) => (prev === target ? null : target));
+  };
+
   return (
     <section className="text-center pt-8 pb-6 flex flex-col items-center justify-start px-4 sm:px-6 md:px-12">
       <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 font-arcade">
@@ -43,19 +48,19 @@ export default function Hero({ setSection }) {
 
       <div className="flex justify-center gap-4 sm:gap-6 mt-4 flex-wrap">
         <button
-          onClick={() => setSection('projects')}
+          onClick={() => handleToggle('projects')}
           className="min-w-[8rem] px-3 py-2 text-xs sm:text-sm font-arcade border border-white hover:shadow-[0_0_15px_white] transition"
         >
           Projects
         </button>
         <button
-          onClick={() => setSection('education')}
+          onClick={() => handleToggle('education')}
           className="min-w-[8rem] px-3 py-2 text-xs sm:text-sm font-arcade border border-white hover:shadow-[0_0_15px_white] transition"
         >
           Education
         </button>
         <button
-          onClick={() => setSection('skills')}
+          onClick={() => handleToggle('skills')}
           className="min-w-[8rem] px-3 py-2 text-xs sm:text-sm font-arcade border border-white hover:shadow-[0_0_15px_white] transition"
         >
           Skills
