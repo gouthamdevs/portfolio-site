@@ -2,7 +2,7 @@ export default function Skills() {
   const skills = ['Unity', 'Unreal Engine', 'Godot', 'C#', 'Python', 'GDScript'];
 
   return (
-    <section className="relative -mt-60 py-20 px-6 text-white">
+    <section className="py-20 px-6 text-white">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-12">Skills</h2>
         <div className="flex flex-wrap justify-center gap-4">

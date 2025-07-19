@@ -27,6 +27,13 @@
   border-radius: 1px;
 }
 
+html, body {
+  background-color: #3D003D; /* or your desired dark color */
+  min-height: 100%;
+  margin: 0;
+}
+
+
 
 @keyframes floatPixel {
   0% {
